@@ -9,25 +9,26 @@ import {
   Dropdown,
 } from "react-bootstrap";
 import { observer } from "mobx-react";
+import { Languages } from "../../stores/language";
 
 export const Header = observer(({ language }) => {
+  var changeLang = (event) => {
+    language.value = event.target.value;
+  };
   return (
     <Navbar bg="dark" variant="dark">
       <Nav className="mr-auto">
         <Navbar.Brand href="#home">+</Navbar.Brand>
-        <Nav.Link href="#home">Home</Nav.Link>
         <DropdownButton
           variant="outline-secondary"
-          title="Lang"
+          title={language.value}
           id="input-group-dropdown-1"
-          onChange={(n) => console.log(n.value)}
         >
-          <Dropdown.Item value={"fr"} href="#">
-            fr
-          </Dropdown.Item>
-          <Dropdown.Item value={"en"} href="#">
-            en
-          </Dropdown.Item>
+          {Object.entries(Languages).map((entry, i) => (
+            <Dropdown.Item onClick={changeLang} value={entry[0]} key={`lang-${i}`}>
+              {entry[1]}
+            </Dropdown.Item>
+          ))}
         </DropdownButton>
       </Nav>
       <Form inline>

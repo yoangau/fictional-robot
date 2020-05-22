@@ -1,4 +1,4 @@
-import { observable } from "mobx-react"
+import { observable } from "mobx"
 
 export const Languages = {
     fr: 'fr',
@@ -6,6 +6,6 @@ export const Languages = {
 }
 
 export class Language {
-    @observable
-    language = Languages.en
+
+    language = observable.box(Languages.en)
 }
