@@ -1,7 +1,9 @@
+import { LanguageMap } from "./language-map.interface.";
+
 export default interface Article {
-  title: string;
-  description: string;
+  title: LanguageMap;
+  description: LanguageMap;
   img: string;
-  text: string;
+  text: LanguageMap;
   date: Date;
 }
