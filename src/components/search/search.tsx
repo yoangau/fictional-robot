@@ -1,8 +1,8 @@
 import React from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
-import Dictionnary from "../../interfaces/dictionnary.interface";
+import { LanguageMap } from "../../interfaces/language-map.interface.";
 
-export const SearchLanguage: Dictionnary<string> = {
+export const SearchLanguage: LanguageMap = {
   fr: "Rechercher",
   en: "Search",
 };

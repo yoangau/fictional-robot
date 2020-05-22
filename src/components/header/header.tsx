@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  DropdownButton,
-  Dropdown,
-} from "react-bootstrap";
-import { Languages, LanguageState } from "../../interfaces/language.interface";
+import { Navbar, Nav, DropdownButton, Dropdown } from "react-bootstrap";
+import { LanguageState } from "../../states/language.state";
 import { Search } from "../search/search";
+import { Languages } from "../../App";
 
 export const Header = ({ language, changeLanguage }: LanguageState) => {
   return (

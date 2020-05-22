@@ -1,3 +1,3 @@
-import { helloWorld } from "./hello-world/hello-world";
+import { HelloWorld } from "./hello-world/hello-world";
 
-export const articles = [helloWorld];
+export const articles = [HelloWorld];
