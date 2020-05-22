@@ -1,17 +1,14 @@
-import React from 'react';
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header } from './components/header/header';
-import { Language } from './stores/language';
+import React, { useState } from "react";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Header } from "./components/header/header";
+import { Languages } from "./interfaces/language";
 
-const languageStore = new Language()
-
-function App() {
+export const App = () => {
+  const [language, changeLanguage] = useState(Languages.en)
   return (
     <div className="App">
-      <Header language={languageStore.language}/>
+      <Header language={language} changeLanguage={changeLanguage} />
     </div>
   );
-}
-
-export default App;
+};
