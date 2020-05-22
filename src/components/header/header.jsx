@@ -8,7 +8,7 @@ import {
   DropdownButton,
   Dropdown,
 } from "react-bootstrap";
-import { observer } from "react-mobx";
+import { observer } from "mobx-react";
 
 export const Header = observer(({ language }) => {
   return (
@@ -22,8 +22,12 @@ export const Header = observer(({ language }) => {
           id="input-group-dropdown-1"
           onChange={(n) => console.log(n.value)}
         >
-          <Dropdown.Item value={'fr'} href="#">fr</Dropdown.Item>
-          <Dropdown.Item value={'en'} href="#">en</Dropdown.Item>
+          <Dropdown.Item value={"fr"} href="#">
+            fr
+          </Dropdown.Item>
+          <Dropdown.Item value={"en"} href="#">
+            en
+          </Dropdown.Item>
         </DropdownButton>
       </Nav>
       <Form inline>
