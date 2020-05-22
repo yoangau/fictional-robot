@@ -11,9 +11,9 @@ import {
 import { observer } from "mobx-react";
 import { Languages } from "../../stores/language";
 
-export const Header = observer(({ language }) => {
-  var changeLang = (event) => {
-    language.value = event.target.value;
+export const Header = observer(({ language }: { language: string }) => {
+  var changeLang = (event: any) => {
+    language = event.target.value;
   };
   return (
     <Navbar bg="dark" variant="dark">
@@ -21,11 +21,11 @@ export const Header = observer(({ language }) => {
         <Navbar.Brand href="#home">+</Navbar.Brand>
         <DropdownButton
           variant="outline-secondary"
-          title={language.value}
+          title={language}
           id="input-group-dropdown-1"
         >
-          {Object.entries(Languages).map((entry, i) => (
-            <Dropdown.Item onClick={changeLang} value={entry[0]} key={`lang-${i}`}>
+          {Object.entries(Languages).map((entry) => (
+            <Dropdown.Item onClick={changeLang} key={`lang-${entry[0]}`}>
               {entry[1]}
             </Dropdown.Item>
           ))}
