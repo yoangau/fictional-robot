@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
-import Dictionnary from "../../interfaces/dictionnary";
+import Dictionnary from "../../interfaces/dictionnary.interface";
 
 export const SearchLanguage: Dictionnary<string> = {
   fr: "Rechercher",

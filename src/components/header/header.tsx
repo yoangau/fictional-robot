@@ -5,7 +5,7 @@ import {
   DropdownButton,
   Dropdown,
 } from "react-bootstrap";
-import { Languages, LanguageState } from "../../interfaces/language";
+import { Languages, LanguageState } from "../../interfaces/language.interface";
 import { Search } from "../search/search";
 
 export const Header = ({ language, changeLanguage }: LanguageState) => {

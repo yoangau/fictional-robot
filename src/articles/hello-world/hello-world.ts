@@ -1,4 +1,4 @@
-import Article from "../../interfaces/article";
+import Article from "../../interfaces/article.interface";
 
 export const helloWorld: Article = {
   title: "Hello World",

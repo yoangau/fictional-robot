@@ -1,4 +1,4 @@
-import Dictionnary from "../interfaces/dictionnary";
+import Dictionnary from "./dictionnary.interface";
 
 export const Languages: Dictionnary<string> = {
   fr: "fr",
