@@ -1,6 +1,6 @@
-import React from "react";
+import Dictionnary from "../interfaces/dictionnary";
 
-export const Languages = {
+export const Languages: Dictionnary<string> = {
   fr: "fr",
   en: "en",
 };
