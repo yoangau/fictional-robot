@@ -1,25 +1,28 @@
 import React from "react";
 import { Navbar, Nav, DropdownButton, Dropdown } from "react-bootstrap";
-import { LanguageState } from "../../states/language.state";
 import { Search } from "../search/search";
-import { Languages } from "../../App";
+import { useSelector, useDispatch } from "react-redux";
+import { changeLanguage, selectLanguage } from "../../language/language.slice";
+import { Languages, Language } from "../../language/languages";
 
-export const Header = ({ language, changeLanguage }: LanguageState) => {
+export const Header = () => {
+  const language = useSelector(selectLanguage);
+  const dispatch = useDispatch();
   return (
     <Navbar bg="dark" variant="dark">
       <Nav className="mr-auto">
-        <Navbar.Brand href="#home">+</Navbar.Brand>
+        <Navbar.Brand href="/">+</Navbar.Brand>
         <DropdownButton
           variant="outline-secondary"
           title={language}
           id="input-group-dropdown-1"
         >
-          {Object.entries(Languages).map((entry) => (
+          {Languages.map((language: Language) => (
             <Dropdown.Item
-              onClick={() => changeLanguage(entry[0])}
-              key={`lang-${entry[0]}`}
+              onClick={() => dispatch(changeLanguage(language))}
+              key={`lang-${language}`}
             >
-              {entry[1]}
+              {language}
             </Dropdown.Item>
           ))}
         </DropdownButton>

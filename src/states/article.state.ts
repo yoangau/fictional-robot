@@ -1,4 +1,4 @@
-import Article from "../interfaces/article.interface";
+import Article from "../components/article/article.interface";
 
 export interface ArticleState {
   article: Article;

@@ -1,13 +1,13 @@
 import React from "react";
 import { Form, FormControl, Button } from "react-bootstrap";
-import { LanguageMap } from "../../interfaces/language-map.interface.";
+import { LanguageMap } from "../../language/languages";
 
-export const SearchLanguage: LanguageMap = {
+export const SearchLanguage: LanguageMap<string> = {
   fr: "Rechercher",
   en: "Search",
 };
 
-export const Search = ({language}: { language: string; }) => {
+export const Search = ({ language }: { language: string }) => {
   return (
     <Form inline>
       <FormControl

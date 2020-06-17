@@ -7,4 +7,12 @@
 3. It
 4. Works
 
-__Hello__ _world_ ___!___
+```py
+print("hello world")
+```
+
+> quote
+
+![test](https://miro.medium.com/max/4000/1*KUy_KKExZrSpBuv9XfyBgA.png)
+
+**Hello** _world_ **_!_**

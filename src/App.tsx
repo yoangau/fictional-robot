@@ -2,21 +2,40 @@ import React, { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Header } from "./components/header/header";
-import { LanguageMap } from "./interfaces/language-map.interface.";
 import { articles } from "./articles/articles";
 import { ArticlePreview } from "./components/article/article-preview";
-
-export const Languages: LanguageMap = {
-  fr: "fr",
-  en: "en",
-};
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectLanguage } from "./language/language.slice";
 
 export const App = () => {
-  const [language, changeLanguage] = useState(Languages.en)
+  const language = useSelector(selectLanguage);
+
   return (
     <div className="App">
-      <Header language={language} changeLanguage={changeLanguage} />
-      {articles.map(article => <ArticlePreview article={article} language={language}/>)}
+      <Header />
+      <div
+        style={{
+          marginTop: "10vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          alignContent: "space-around",
+        }}
+      >
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              {articles.map((article, i) => (
+                <ArticlePreview article={article} key={`article-${i}`} />
+              ))}
+            </Route>
+            {articles.map((article) => (
+              <Route exact to={article.title[language].replace(" ", "")} />
+            ))}
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 };
