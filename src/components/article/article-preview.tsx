@@ -1,24 +1,22 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
-import Article from "./article.interface";
+import { ArticleProps } from "./article.interface";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectLanguage } from "../../language/language.slice";
 
-export interface ArticleProps {
-  article: Article;
-}
-
 export const ArticlePreview = ({ article }: ArticleProps) => {
   const language = useSelector(selectLanguage);
 
-  const [element, changeElement] = useState(
+  const [pressed, changePressed] = useState(false);
+
+  if (pressed)
+    return <Redirect to={article.title[language].replace(" ", "")} />;
+  return (
     <Card
       style={{ marginLeft: "5px", marginRight: "5px", maxWidth: "512px" }}
       onClick={() => {
-        changeElement(
-          <Redirect to={article.title[language].replace(" ", "")} />
-        );
+        changePressed(true);
       }}
     >
       <Card.Img variant="top" src={article.img} />
@@ -28,5 +26,4 @@ export const ArticlePreview = ({ article }: ArticleProps) => {
       </Card.Body>
     </Card>
   );
-  return element;
 };
