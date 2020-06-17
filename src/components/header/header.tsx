@@ -1,33 +1,30 @@
 import React from "react";
-import { Navbar, Nav, DropdownButton, Dropdown } from "react-bootstrap";
+import { Navbar, Nav, Button } from "react-bootstrap";
 import { Search } from "../search/search";
-import { useSelector, useDispatch } from "react-redux";
-import { changeLanguage, selectLanguage } from "../../language/language.slice";
-import { Languages, Language } from "../../language/languages";
+import { useHistory } from "react-router-dom";
+import { LanguageSelector } from "../../language/language-selector";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
 export const Header = () => {
-  const language = useSelector(selectLanguage);
-  const dispatch = useDispatch();
+  const history = useHistory();
+  const handleClick = () => {
+    history.push("/");
+  };
   return (
-    <Navbar bg="dark" variant="dark">
-      <Nav className="mr-auto">
-        <Navbar.Brand href="/">+</Navbar.Brand>
-        <DropdownButton
-          variant="outline-secondary"
-          title={language}
-          id="input-group-dropdown-1"
-        >
-          {Languages.map((language: Language) => (
-            <Dropdown.Item
-              onClick={() => dispatch(changeLanguage(language))}
-              key={`lang-${language}`}
-            >
-              {language}
-            </Dropdown.Item>
-          ))}
-        </DropdownButton>
-      </Nav>
-      <Search language={language} />
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand>
+        <Button onClick={handleClick} variant="dark">
+          <FontAwesomeIcon icon={faHeart} />
+        </Button>
+      </Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <LanguageSelector />
+        </Nav>
+        <Search />
+      </Navbar.Collapse>
     </Navbar>
   );
 };

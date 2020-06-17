@@ -12,18 +12,18 @@ export const App = () => {
   const language = useSelector(selectLanguage);
 
   return (
-    <div className="App">
-      <Header />
-      <div
-        style={{
-          marginTop: "10vh",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          alignContent: "space-around",
-        }}
-      >
-        <Router>
+    <Router>
+      <div className="App">
+        <Header />
+        <div
+          style={{
+            marginTop: "10vh",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            alignContent: "space-around",
+          }}
+        >
           <Switch>
             <Route exact path="/">
               {articles.map((article, i) => (
@@ -43,8 +43,8 @@ export const App = () => {
               </Route>
             ))}
           </Switch>
-        </Router>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
