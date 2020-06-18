@@ -6,6 +6,7 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ArticlePage } from './components/article/article-page';
 import { selectArticles } from './components/article/articles.slice';
+import 'github-markdown-css';
 
 export const App = () => {
   const { articles } = useSelector(selectArticles);
@@ -23,6 +24,7 @@ export const App = () => {
         <div
           style={{
             marginTop: '10vh',
+            marginBottom: '10vh',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',

@@ -4,6 +4,8 @@ import { selectLanguage } from '../language/language.slice';
 import { ArticleProps } from './article.interface';
 import ReactMarkdown from 'react-markdown';
 import { CodeRenderer } from './CodeRenderer';
+// @ts-ignore
+import Fade from 'react-reveal/Fade';
 
 export const ArticlePage = ({ article }: ArticleProps) => {
   const language = useSelector(selectLanguage);
@@ -13,8 +15,10 @@ export const ArticlePage = ({ article }: ArticleProps) => {
     .then((text) => setContent(text));
 
   return (
-    <div style={{ marginLeft: '5px', marginRight: '5px', maxWidth: '512px' }}>
-      <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
-    </div>
+    <Fade>
+      <div className="markdown-body" style={{ maxWidth: '512px' }}>
+        <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
+      </div>
+    </Fade>
   );
 };

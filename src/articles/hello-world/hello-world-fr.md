@@ -13,6 +13,11 @@
 print("bonjour le monde")
 ```
 
+```ts
+const bonjourLeMonde: string = 'bonjourLeMonde';
+console.log(bonjourLeMonde);
+```
+
 > citation
 
 ![test](https://miro.medium.com/max/4000/1*KUy_KKExZrSpBuv9XfyBgA.png)
