@@ -4,13 +4,17 @@ import { RootState } from "../store";
 export interface LanguageState {
   language: Language;
 }
-const isLanguageAvailable = (lang: string): boolean => {
-  return Languages.some((definedLang) => definedLang === lang);
+const findLanguageAvailability = (lang: string): Language | undefined => {
+  for (const definedLang of Languages) {
+    if (definedLang === lang.split("-")[0]) {
+      return definedLang as Language;
+    }
+  }
 };
 const getBrowserLanguage = (): Language => {
-  const lang = window.navigator.languages.find(isLanguageAvailable);
+  const lang = window.navigator.languages.find(findLanguageAvailability);
   if (lang) return lang as Language;
-  if (isLanguageAvailable(window.navigator.language))
+  if (findLanguageAvailability(window.navigator.language))
     return window.navigator.language as Language;
   return "en";
 };
