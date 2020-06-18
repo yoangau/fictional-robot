@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Nav, Button } from "react-bootstrap";
 import { Search } from "../search/search";
 import { useHistory } from "react-router-dom";
-import { LanguageSelector } from "../../language/language-selector";
+import { LanguageSelector } from "../language/language-selector";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 

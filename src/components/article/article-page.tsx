@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectLanguage } from "../../language/language.slice";
+import { selectLanguage } from "../language/language.slice";
 import { ArticleProps } from "./article.interface";
 import ReactMarkdown from "react-markdown";
 

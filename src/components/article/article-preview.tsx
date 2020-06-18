@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import { ArticleProps } from "./article.interface";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectLanguage } from "../../language/language.slice";
+import { selectLanguage } from "../language/language.slice";
 
 export const ArticlePreview = ({ article }: ArticleProps) => {
   const language = useSelector(selectLanguage);

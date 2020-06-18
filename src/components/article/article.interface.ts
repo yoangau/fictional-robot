@@ -1,11 +1,12 @@
-import { LanguageMap } from "../../language/languages";
+import { LanguageMap } from '../language/languages';
 
 export interface Article {
   title: LanguageMap<string>;
   description: LanguageMap<string>;
   img: string;
   text: LanguageMap<string>;
-  date: Date;
+  date: string;
+  url: string;
 }
 
 export interface ArticleProps {

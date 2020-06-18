@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Language, Languages } from "./languages";
-import { RootState } from "../store";
+import { RootState } from "../../store";
 export interface LanguageState {
   language: Language;
 }
@@ -11,6 +11,7 @@ const findLanguageAvailability = (lang: string): Language | undefined => {
     }
   }
 };
+
 const getBrowserLanguage = (): Language => {
   const lang = window.navigator.languages.find(findLanguageAvailability);
   if (lang) return lang as Language;
