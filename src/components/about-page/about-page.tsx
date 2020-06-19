@@ -8,6 +8,8 @@ import { faGithub, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-i
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { CodeRenderer } from '../article/code-renderer';
 import ReactMarkdown from 'react-markdown';
+// @ts-ignore
+import Fade from 'react-reveal/Fade';
 
 export const AboutPage = () => {
   const [content, setContent] = useState('');
@@ -20,41 +22,43 @@ export const AboutPage = () => {
   const darkLink = { fontSize: '30px', color: 'inherit', textDecoration: 'none', marginLeft: '10px', marginRight: '10px' };
 
   return (
-    <div style={{ maxWidth: '512px', width: '90%' }}>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-        <Image style={{ width: '50%' }} src={aboutSource.image} roundedCircle />
+    <Fade>
+      <div style={{ maxWidth: '512px', width: '90%' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+          <Image style={{ width: '50%' }} src={aboutSource.image} roundedCircle />
+        </div>
+        <h1 style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>{aboutSource.name}</h1>
+        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+          {aboutSource.email && (
+            <a style={darkLink} href={`mailto:${aboutSource.email}`}>
+              <FontAwesomeIcon icon={faEnvelope} />
+            </a>
+          )}
+          {aboutSource.phone && (
+            <a style={darkLink} href={`tel:${aboutSource.phone}`}>
+              <FontAwesomeIcon icon={faPhone} />
+            </a>
+          )}
+          {aboutSource.github && (
+            <a style={darkLink} href={aboutSource.github}>
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+          )}
+          {aboutSource.facebook && (
+            <a style={darkLink} href={aboutSource.facebook}>
+              <FontAwesomeIcon icon={faFacebook} />
+            </a>
+          )}
+          {aboutSource.linkedin && (
+            <a style={darkLink} href={aboutSource.linkedin}>
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          )}
+        </div>
+        <div className="markdown-body">
+          <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
+        </div>
       </div>
-      <h1 style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>{aboutSource.name}</h1>
-      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-        {aboutSource.email && (
-          <a style={darkLink} href={`mailto:${aboutSource.email}`}>
-            <FontAwesomeIcon icon={faEnvelope} />
-          </a>
-        )}
-        {aboutSource.phone && (
-          <a style={darkLink} href={`tel:${aboutSource.phone}`}>
-            <FontAwesomeIcon icon={faPhone} />
-          </a>
-        )}
-        {aboutSource.github && (
-          <a style={darkLink} href={aboutSource.github}>
-            <FontAwesomeIcon icon={faGithub} />
-          </a>
-        )}
-        {aboutSource.facebook && (
-          <a style={darkLink} href={aboutSource.facebook}>
-            <FontAwesomeIcon icon={faFacebook} />
-          </a>
-        )}
-        {aboutSource.linkedin && (
-          <a style={darkLink} href={aboutSource.linkedin}>
-            <FontAwesomeIcon icon={faLinkedin} />
-          </a>
-        )}
-      </div>
-      <div className="markdown-body">
-        <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
-      </div>
-    </div>
+    </Fade>
   );
 };

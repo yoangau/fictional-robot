@@ -13,7 +13,7 @@ export const ArticlePreview = ({ article }: ArticleProps) => {
   const [cursor, changeCursor] = useState('');
 
   return (
-    <Fade bottom>
+    <Fade>
       <Card style={{ margin: '20px', maxWidth: '512px' }}>
         <Card.Img
           onClick={() => {
