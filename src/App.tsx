@@ -6,12 +6,13 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ArticlePage } from './components/article/article-page';
 import { selectArticles } from './components/article/articles.slice';
+import { articles as articlesSource } from './articles/articles';
 import 'github-markdown-css';
 
 export const App = () => {
   const { articles } = useSelector(selectArticles);
   const articlePreviews = articles.map((article, i) => <ArticlePreview article={article} key={`article-preview-${i}`} />);
-  const articlePages = articles.map((article, i) => (
+  const articlePages = articlesSource.map((article, i) => (
     <Route exact to={article.url} key={`article-page-${i}`}>
       <ArticlePage article={article} />
     </Route>
