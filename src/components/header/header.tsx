@@ -25,7 +25,7 @@ export const Header = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }} href="/about">
+          <Nav.Link onClick={() => history.push('about')} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
             {aboutHeaderSource[language]}
           </Nav.Link>
           <LanguageSelector />

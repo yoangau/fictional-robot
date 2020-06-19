@@ -8,4 +8,4 @@ I am a simple robot writing fiction.
 
 ## Else
 
-I shine in the dark.
+I glow in the dark.
