@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, FormControl, Dropdown, Badge } from 'react-bootstrap';
+import { Form, FormControl } from 'react-bootstrap';
 import { LanguageMap, Languages } from '../language/languages';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectLanguage } from '../language/language.slice';

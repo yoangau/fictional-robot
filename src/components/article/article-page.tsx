@@ -16,7 +16,7 @@ export const ArticlePage = ({ article }: ArticleProps) => {
 
   return (
     <Fade>
-      <div className="markdown-body" style={{ maxWidth: '512px' }}>
+      <div className="markdown-body" style={{ maxWidth: '512px', width: '90%' }}>
         <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
       </div>
     </Fade>
