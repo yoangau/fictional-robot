@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
 import { Form, FormControl } from 'react-bootstrap';
-import { LanguageMap, Languages } from '../language/languages';
+import { Languages } from '../../specs/language/languages';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectLanguage } from '../language/language.slice';
 import Fuse from 'fuse.js';
-import { articles as articlesSource } from '../../articles/articles';
+import { articlesSource } from '../../specs/articles/articles';
 import { changeArticles, selectArticles } from '../article/articles.slice';
 import { useHistory } from 'react-router-dom';
 import { SearchResult } from './search-result';
-
-export const SearchLanguage: LanguageMap<string> = {
-  fr: 'Rechercher',
-  en: 'Search',
-};
+import { SearchSource } from '../../specs/search/search';
 
 export const Search = () => {
   const dispatch = useDispatch();
@@ -37,7 +33,7 @@ export const Search = () => {
     >
       <FormControl
         type="text"
-        placeholder={SearchLanguage[language]}
+        placeholder={SearchSource[language]}
         className="mr-sm-2"
         value={searchValue}
         onChange={({ target }) => {

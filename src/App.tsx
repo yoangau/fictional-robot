@@ -6,8 +6,9 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ArticlePage } from './components/article/article-page';
 import { selectArticles } from './components/article/articles.slice';
-import { articles as articlesSource } from './articles/articles';
+import { articlesSource } from './specs/articles/articles';
 import 'github-markdown-css';
+import { AboutPage } from './components/about-page/about-page';
 
 export const App = () => {
   const { articles } = useSelector(selectArticles);
@@ -35,6 +36,9 @@ export const App = () => {
           <Switch>
             <Route exact path="/">
               {articlePreviews}
+            </Route>
+            <Route exact path="/about">
+              <AboutPage />
             </Route>
             {articlePages}
           </Switch>

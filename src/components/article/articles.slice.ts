@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../store';
-import { articles } from '../../articles/articles';
-import { Article } from './article.interface';
+import { articlesSource } from '../../specs/articles/articles';
+import { Article } from '../../specs/articles/article.interface';
 
 export interface ArticlesState {
   articles: Array<Article>;
 }
 
 const initialState: ArticlesState = {
-  articles: articles,
+  articles: articlesSource,
 };
 
 export const slice = createSlice({

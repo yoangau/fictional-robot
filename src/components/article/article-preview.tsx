@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
-import { ArticleProps } from './article.interface';
+import { ArticleProps } from '../../specs/articles/article.interface';
 import { useSelector } from 'react-redux';
 import { selectLanguage } from '../language/language.slice';
 import { useHistory } from 'react-router-dom';
