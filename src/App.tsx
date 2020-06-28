@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components/header/header';
 import { ArticlePreview } from './components/article/article-preview';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ArticlePage } from './components/article/article-page';
 import { selectArticles } from './components/article/articles.slice';
