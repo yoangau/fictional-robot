@@ -1,5 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import { Header } from './components/header/header';
 import { ArticlePreview } from './components/article/article-preview';
 import { Route, HashRouter as Router, Switch } from 'react-router-dom';
@@ -9,6 +8,25 @@ import { selectArticles } from './components/article/articles.slice';
 import { articlesSource } from './specs/articles/articles';
 import 'github-markdown-css';
 import { AboutPage } from './components/about-page/about-page';
+import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
+
+let theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#f1f1f1',
+      main: '#EEE',
+      dark: '#a6a6a6',
+      contrastText: '#000',
+    },
+    secondary: {
+      light: '#5c6166',
+      main: '#343a40',
+      dark: '#24282c',
+      contrastText: '#fff',
+    },
+  },
+});
+theme = responsiveFontSizes(theme);
 
 export const App = () => {
   const { articles } = useSelector(selectArticles);
@@ -20,30 +38,32 @@ export const App = () => {
   ));
 
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <div
-          style={{
-            marginTop: '10vh',
-            marginBottom: '10vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            alignContent: 'space-around',
-          }}
-        >
-          <Switch>
-            <Route exact path="/">
-              {articlePreviews}
-            </Route>
-            <Route exact path="/about">
-              <AboutPage />
-            </Route>
-            {articlePages}
-          </Switch>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <div className="App">
+          <Header />
+          <div
+            style={{
+              marginTop: '10vh',
+              marginBottom: '10vh',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              alignContent: 'space-around',
+            }}
+          >
+            <Switch>
+              <Route exact path="/">
+                {articlePreviews}
+              </Route>
+              <Route exact path="/about">
+                <AboutPage />
+              </Route>
+              {articlePages}
+            </Switch>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </ThemeProvider>
   );
 };

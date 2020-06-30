@@ -1,26 +1,34 @@
-import React from 'react';
-import { NavDropdown } from 'react-bootstrap';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeLanguage } from './language.slice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { Languages } from '../../specs/language/languages';
+import { Menu, MenuItem, IconButton } from '@material-ui/core';
+import { Translate } from '@material-ui/icons';
 
 export const LanguageSelector = () => {
+  const [open, updateOpen] = useState<boolean>(false);
   const dispatch = useDispatch();
+  const anchorRef = useRef(null);
 
   return (
-    <NavDropdown title={<FontAwesomeIcon style={{ fontSize: '30px' }} icon={faLanguage} />} id="basic-nav-dropdown">
-      {Languages.map((lang, i) => (
-        <NavDropdown.Item
-          onClick={() => {
-            dispatch(changeLanguage(lang));
-          }}
-          key={`drop-${i}`}
-        >
-          {lang}
-        </NavDropdown.Item>
-      ))}
-    </NavDropdown>
+    <>
+      <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={() => updateOpen(true)} ref={anchorRef}>
+        <Translate />
+      </IconButton>
+      <Menu id="simple-menu" anchorEl={anchorRef.current} keepMounted open={open} onClose={() => updateOpen(false)}>
+        {Languages.map((lang, i) => (
+          <MenuItem
+            value={lang}
+            onClick={() => {
+              dispatch(changeLanguage(lang));
+              updateOpen(false);
+            }}
+            key={`drop-${i}`}
+          >
+            {lang}
+          </MenuItem>
+        ))}
+      </Menu>
+    </>
   );
 };
