@@ -6,6 +6,12 @@ import { selectLanguage } from '../language/language.slice';
 import { useHistory } from 'react-router-dom';
 // @ts-ignore
 import Fade from 'react-reveal/Fade';
+import styled from '@emotion/styled';
+
+const StyledCard = styled(Card)`
+  margin: 20px;
+  max-width: 512px;
+`;
 
 export const ArticlePreview = ({ article }: ArticleProps) => {
   const language = useSelector(selectLanguage);
@@ -14,7 +20,7 @@ export const ArticlePreview = ({ article }: ArticleProps) => {
 
   return (
     <Fade>
-      <Card style={{ margin: '20px', maxWidth: '512px' }}>
+      <StyledCard>
         <Card.Img
           onClick={() => {
             history.push(article.url);
@@ -28,7 +34,7 @@ export const ArticlePreview = ({ article }: ArticleProps) => {
           <Card.Title>{article.title[language]}</Card.Title>
           <Card.Text>{article.description[language]}</Card.Text>
         </Card.Body>
-      </Card>
+      </StyledCard>
     </Fade>
   );
 };

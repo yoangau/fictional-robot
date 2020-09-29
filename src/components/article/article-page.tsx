@@ -6,6 +6,12 @@ import ReactMarkdown from 'react-markdown';
 import { CodeRenderer } from './code-renderer';
 // @ts-ignore
 import Fade from 'react-reveal/Fade';
+import styled from '@emotion/styled';
+
+const ArticleBody = styled.div`
+  max-width: 512px;
+  width: 90%;
+`;
 
 export const ArticlePage = ({ article }: ArticleProps) => {
   const language = useSelector(selectLanguage);
@@ -16,9 +22,9 @@ export const ArticlePage = ({ article }: ArticleProps) => {
 
   return (
     <Fade>
-      <div className="markdown-body" style={{ maxWidth: '512px', width: '90%' }}>
+      <ArticleBody className="markdown-body">
         <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
-      </div>
+      </ArticleBody>
     </Fade>
   );
 };

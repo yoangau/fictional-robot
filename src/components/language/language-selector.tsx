@@ -6,11 +6,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLanguage } from '@fortawesome/free-solid-svg-icons';
 import { Languages } from '../../specs/language/languages';
 
+import styled from '@emotion/styled';
+
+const LanguageNavDropdown = styled(NavDropdown)`
+  font-size: 30px;
+`;
+
 export const LanguageSelector = () => {
   const dispatch = useDispatch();
 
   return (
-    <NavDropdown title={<FontAwesomeIcon style={{ fontSize: '30px' }} icon={faLanguage} />} id="basic-nav-dropdown">
+    <LanguageNavDropdown title={<FontAwesomeIcon icon={faLanguage} />} id="basic-nav-dropdown">
       {Languages.map((lang, i) => (
         <NavDropdown.Item
           onClick={() => {
@@ -21,6 +27,6 @@ export const LanguageSelector = () => {
           {lang}
         </NavDropdown.Item>
       ))}
-    </NavDropdown>
+    </LanguageNavDropdown>
   );
 };

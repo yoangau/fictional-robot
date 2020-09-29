@@ -8,6 +8,13 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { aboutHeaderSource } from '../../specs/about/about';
 import { useSelector } from 'react-redux';
 import { selectLanguage } from '../language/language.slice';
+import styled from '@emotion/styled';
+
+const NavLink = styled(Nav.Link)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
 
 export const Header = () => {
   const language = useSelector(selectLanguage);
@@ -25,9 +32,7 @@ export const Header = () => {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link onClick={() => history.push('about')} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            {aboutHeaderSource[language]}
-          </Nav.Link>
+          <NavLink onClick={() => history.push('about')}>{aboutHeaderSource[language]}</NavLink>
           <LanguageSelector />
         </Nav>
         <Search />

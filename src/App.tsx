@@ -9,6 +9,16 @@ import { selectArticles } from './components/article/articles.slice';
 import { articlesSource } from './specs/articles/articles';
 import 'github-markdown-css';
 import { AboutPage } from './components/about-page/about-page';
+import styled from '@emotion/styled';
+
+const AppBody = styled.div`
+  margin-top: 10vh;
+  margin-bottom: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-around;
+`;
 
 export const App = () => {
   const { articles } = useSelector(selectArticles);
@@ -21,29 +31,18 @@ export const App = () => {
 
   return (
     <Router>
-      <div className="App">
-        <Header />
-        <div
-          style={{
-            marginTop: '10vh',
-            marginBottom: '10vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            alignContent: 'space-around',
-          }}
-        >
-          <Switch>
-            <Route exact path="/">
-              {articlePreviews}
-            </Route>
-            <Route exact path="/about">
-              <AboutPage />
-            </Route>
-            {articlePages}
-          </Switch>
-        </div>
-      </div>
+      <Header />
+      <AppBody>
+        <Switch>
+          <Route exact path="/">
+            {articlePreviews}
+          </Route>
+          <Route exact path="/about">
+            <AboutPage />
+          </Route>
+          {articlePages}
+        </Switch>
+      </AppBody>
     </Router>
   );
 };

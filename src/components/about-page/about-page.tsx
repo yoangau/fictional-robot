@@ -10,6 +10,42 @@ import { CodeRenderer } from '../article/code-renderer';
 import ReactMarkdown from 'react-markdown';
 // @ts-ignore
 import Fade from 'react-reveal/Fade';
+import styled from '@emotion/styled';
+
+const flexRowCenter = `
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+const DarkLink = styled.a`
+  font-size: 30px;
+  color: black;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+`;
+
+const AboutPageDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 512px;
+`;
+
+const AboutImage = styled(Image)`
+  ${flexRowCenter}
+  max-width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+`;
+
+const AboutName = styled.h1`
+  ${flexRowCenter}
+`;
+
+const AboutLinks = styled.h1`
+  ${flexRowCenter}
+`;
 
 export const AboutPage = () => {
   const [content, setContent] = useState('');
@@ -19,56 +55,52 @@ export const AboutPage = () => {
     .then((response) => response.text())
     .then((text) => setContent(text));
 
-  const darkLink = { fontSize: '30px', color: 'inherit', textDecoration: 'none', marginLeft: '10px', marginRight: '10px' };
-
   return (
     <Fade>
-      <div style={{ maxWidth: '512px', width: '90%' }}>
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-          <Image style={{ width: '50%' }} src={aboutSource.image} roundedCircle />
-        </div>
-        <h1 style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>{aboutSource.name}</h1>
-        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+      <AboutPageDiv>
+        <AboutImage src={aboutSource.image} roundedCircle fluid />
+        <AboutName>{aboutSource.name}</AboutName>
+        <AboutLinks>
           {aboutSource.email && (
-            <a style={darkLink} href={`mailto:${aboutSource.email}`}>
+            <DarkLink href={`mailto:${aboutSource.email}`}>
               <FontAwesomeIcon icon={faEnvelope} />
-            </a>
+            </DarkLink>
           )}
           {aboutSource.phone && (
-            <a style={darkLink} href={`tel:${aboutSource.phone}`}>
+            <DarkLink href={`tel:${aboutSource.phone}`}>
               <FontAwesomeIcon icon={faPhone} />
-            </a>
+            </DarkLink>
           )}
           {aboutSource.github && (
-            <a style={darkLink} href={aboutSource.github}>
+            <DarkLink href={aboutSource.github}>
               <FontAwesomeIcon icon={faGithub} />
-            </a>
+            </DarkLink>
           )}
           {aboutSource.facebook && (
-            <a style={darkLink} href={aboutSource.facebook}>
+            <DarkLink href={aboutSource.facebook}>
               <FontAwesomeIcon icon={faFacebook} />
-            </a>
+            </DarkLink>
           )}
           {aboutSource.twitter && (
-            <a style={darkLink} href={aboutSource.twitter}>
+            <DarkLink href={aboutSource.twitter}>
               <FontAwesomeIcon icon={faTwitter} />
-            </a>
+            </DarkLink>
           )}
           {aboutSource.twitch && (
-            <a style={darkLink} href={aboutSource.twitch}>
+            <DarkLink href={aboutSource.twitch}>
               <FontAwesomeIcon icon={faTwitch} />
-            </a>
+            </DarkLink>
           )}
           {aboutSource.linkedin && (
-            <a style={darkLink} href={aboutSource.linkedin}>
+            <DarkLink href={aboutSource.linkedin}>
               <FontAwesomeIcon icon={faLinkedin} />
-            </a>
+            </DarkLink>
           )}
-        </div>
+        </AboutLinks>
         <div className="markdown-body">
           <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
         </div>
-      </div>
+      </AboutPageDiv>
     </Fade>
   );
 };
