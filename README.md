@@ -1,4 +1,4 @@
-![Super-Linter](https://github.com/yoangau/fictional-robot/workflows/Super-Linter/badge.svg?branch=master)
+![Continuous Integration](https://github.com/yoangau/fictional-robot/workflows/Continuous%20Integration/badge.svg)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
