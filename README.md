@@ -1,4 +1,7 @@
-![Continuous Integration](https://github.com/yoangau/fictional-robot/workflows/Continuous%20Integration/badge.svg)
+# Fictional Robot
+
+![Prettier](https://github.com/yoangau/fictional-robot/workflows/Prettier/badge.svg)
+![yarn-install-build-test](https://github.com/yoangau/fictional-robot/workflows/yarn-install-build-test/badge.svg)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
