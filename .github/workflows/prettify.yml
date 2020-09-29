@@ -23,3 +23,9 @@ jobs:
         with:
           # This part is also where you can pass other options, for example:
           prettier_options: -w .
+
+      - name: Check Lint
+        uses: creyD/prettier_action@v3.0
+        with:
+          # This part is also where you can pass other options, for example:
+          prettier_options: -l .
