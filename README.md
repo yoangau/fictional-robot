@@ -2,7 +2,7 @@
 
 ![prettify](https://github.com/yoangau/fictional-robot/workflows/Prettier/badge.svg)
 ![build](https://github.com/yoangau/fictional-robot/workflows/Build/badge.svg)
-![netlify](https://img.shields.io/netlify/61957e05-8b6d-4bec-a0e6-b256b63f9013)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/61957e05-8b6d-4bec-a0e6-b256b63f9013/deploy-status)](https://app.netlify.com/sites/fictionalrobot/deploys)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
