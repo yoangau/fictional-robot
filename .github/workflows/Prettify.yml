@@ -1,4 +1,4 @@
-name: Prettier
+name: Prettify
 
 # This action works with pull requests and pushes
 on:
@@ -18,8 +18,8 @@ jobs:
           # Make sure the actual branch is checked out when running on pull requests
           ref: ${{ github.head_ref }}
 
-      - name: Check Code
+      - name: Prettify
         uses: creyD/prettier_action@v3.0
         with:
           # This part is also where you can pass other options, for example:
-          prettier_options: -l .
+          prettier_options: -w .
