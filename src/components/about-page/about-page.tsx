@@ -51,7 +51,7 @@ export const AboutPage = () => {
           )}
           {aboutSource.twitter && (
             <a style={darkLink} href={aboutSource.twitter}>
-              <FontAwesomeIcon icon={faFacebook} />
+              <FontAwesomeIcon icon={faTwitter} />
             </a>
           )}
           {aboutSource.twitch && (
