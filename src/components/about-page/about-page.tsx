@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { aboutSource } from '../../specs/about/about';
 import { Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin, faFacebook, faTwitter, faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { CodeRenderer } from '../article/code-renderer';
 import ReactMarkdown from 'react-markdown';
@@ -47,6 +47,16 @@ export const AboutPage = () => {
           {aboutSource.facebook && (
             <a style={darkLink} href={aboutSource.facebook}>
               <FontAwesomeIcon icon={faFacebook} />
+            </a>
+          )}
+          {aboutSource.twitter && (
+            <a style={darkLink} href={aboutSource.twitter}>
+              <FontAwesomeIcon icon={faFacebook} />
+            </a>
+          )}
+          {aboutSource.twitch && (
+            <a style={darkLink} href={aboutSource.twitch}>
+              <FontAwesomeIcon icon={faTwitch} />
             </a>
           )}
           {aboutSource.linkedin && (

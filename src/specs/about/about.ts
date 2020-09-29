@@ -7,6 +7,8 @@ interface About {
   github?: string;
   facebook?: string;
   linkedin?: string;
+  twitter?: string;
+  twitch?: string;
   email?: string;
   phone?: string;
 }
