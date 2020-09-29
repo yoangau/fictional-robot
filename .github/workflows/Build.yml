@@ -1,4 +1,4 @@
-name: yarn-install-build-test
+name: Build
 on: [push]
 jobs:
   build:
