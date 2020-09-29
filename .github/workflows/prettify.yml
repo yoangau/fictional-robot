@@ -1,4 +1,4 @@
-name: Prettify
+name: prettify
 
 # This action works with pull requests and pushes
 on:
