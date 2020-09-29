@@ -1,6 +1,6 @@
-import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import languageReducer from "./components/language/language.slice";
-import articlesReducer from "./components/article/articles.slice";
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import languageReducer from './components/language/language.slice';
+import articlesReducer from './components/article/articles.slice';
 
 export const store = configureStore({
   reducer: {
