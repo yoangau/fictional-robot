@@ -20,6 +20,7 @@ console.log(bonjourLeMonde);
 
 > citation
 
-![test](https://miro.medium.com/max/4000/1*KUy_KKExZrSpBuv9XfyBgA.png)
+![online](https://cdn.pixabay.com/photo/2016/11/19/14/00/code-1839406_960_720.jpg)
+![local](./tv-test-pattern.png)
 
 **Bonjour** _le_ **_monde_**

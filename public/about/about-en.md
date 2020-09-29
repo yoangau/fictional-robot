@@ -9,3 +9,4 @@ I am a simple robot writing fiction.
 ## Else
 
 I glow in the dark.
+![local](./tv-test-pattern.png)

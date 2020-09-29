@@ -16,14 +16,22 @@ const ArticleBody = styled.div`
 export const ArticlePage = ({ article }: ArticleProps) => {
   const language = useSelector(selectLanguage);
   const [content, setContent] = useState('');
-  fetch(article.text[language])
+
+  const publicArticleUri = `${process.env.PUBLIC_URL}articles/${article.text[language]}`;
+  const publicFolderUri = `${process.env.PUBLIC_URL}articles/${article.text[language].split('/')[0]}/`;
+
+  fetch(publicArticleUri)
     .then((response) => response.text())
     .then((text) => setContent(text));
 
   return (
     <Fade>
       <ArticleBody className="markdown-body">
-        <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
+        <ReactMarkdown
+          source={content}
+          renderers={{ code: CodeRenderer }}
+          transformImageUri={(uri) => uri.replace('./', publicFolderUri)}
+        />
       </ArticleBody>
     </Fade>
   );

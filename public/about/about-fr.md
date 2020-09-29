@@ -9,3 +9,4 @@ Je suis un simple robot qui écrit de la fiction.
 ## Autre
 
 J'élumine dans le noir.
+![local](./tv-test-pattern.png)
