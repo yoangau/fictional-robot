@@ -9,7 +9,9 @@ import Fade from 'react-reveal/Fade';
 import styled from '@emotion/styled';
 
 const ArticleBody = styled.div`
-  max-width: 512px;
+  display: flex;
+  flex-direction: column;
+  max-width: 768px;
   width: 90%;
 `;
 

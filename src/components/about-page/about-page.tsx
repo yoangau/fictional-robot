@@ -29,7 +29,9 @@ const DarkLink = styled.a`
 const AboutPageDiv = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 512px;
+  max-width: 768px;
+  width: 90%;
+  margin-left: 5%;
 `;
 
 const AboutImage = styled(Image)`
@@ -37,6 +39,7 @@ const AboutImage = styled(Image)`
   max-width: 50%;
   margin-left: 25%;
   margin-right: 25%;
+  margin-bottom: 20px;
 `;
 
 const AboutName = styled.h1`
@@ -56,8 +59,8 @@ export const AboutPage = () => {
     .then((text) => setContent(text));
 
   return (
-    <Fade>
-      <AboutPageDiv>
+    <AboutPageDiv>
+      <Fade>
         <AboutImage src={aboutSource.image} roundedCircle fluid />
         <AboutName>{aboutSource.name}</AboutName>
         <AboutLinks>
@@ -100,7 +103,7 @@ export const AboutPage = () => {
         <div className="markdown-body">
           <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
         </div>
-      </AboutPageDiv>
-    </Fade>
+      </Fade>
+    </AboutPageDiv>
   );
 };
