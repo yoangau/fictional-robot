@@ -36,9 +36,9 @@ const AboutPageDiv = styled.div`
 
 const AboutImage = styled(Image)`
   ${flexRowCenter}
-  max-width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+  max-width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
   margin-bottom: 20px;
 `;
 
