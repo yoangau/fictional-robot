@@ -33,7 +33,7 @@ const FixedNavbar = styled.nav`
     height: 100vh;
 
     &:hover {
-      width: 16rem;
+      width: 17.5rem;
     }
 
     &:hover [class*='logo-icon'] {

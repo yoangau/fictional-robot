@@ -26,8 +26,8 @@ const AppBody = styled(FadeIn)`
   }
 
   @media only screen and (min-width: 600px) {
-    margin-left: 25vw;
-    width: 50vw;
+    margin-left: 30vw;
+    width: 40vw;
   }
 `;
 
