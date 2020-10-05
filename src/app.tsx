@@ -16,16 +16,16 @@ const AppBody = styled(FadeIn)`
   flex-direction: column;
   align-items: center;
   align-content: space-around;
+  margin-bottom: 5vh;
+  margin-top: 5vh;
 
   @media only screen and (max-width: 600px) {
     max-width: 90vw;
     margin-left: 5vw;
     margin-top: 5vh;
-    margin-bottom: 5vh;
   }
 
   @media only screen and (min-width: 600px) {
-    margin-top: 5vh;
     margin-left: 25vw;
     width: 50vw;
   }
