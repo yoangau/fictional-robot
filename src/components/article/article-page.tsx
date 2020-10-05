@@ -4,15 +4,10 @@ import { selectLanguage } from '../language/language.slice';
 import { ArticleProps } from '../../specs/articles/article.interface';
 import ReactMarkdown from 'react-markdown';
 import { CodeRenderer } from './code-renderer';
-// @ts-ignore
-import Fade from 'react-reveal/Fade';
 import styled from '@emotion/styled';
 
-const ArticleBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 768px;
-  width: 90%;
+const MdArticle = styled(ReactMarkdown)`
+  widht: 100%;
 `;
 
 export const ArticlePage = ({ article }: ArticleProps) => {
@@ -22,11 +17,5 @@ export const ArticlePage = ({ article }: ArticleProps) => {
     .then((response) => response.text())
     .then((text) => setContent(text));
 
-  return (
-    <Fade>
-      <ArticleBody className="markdown-body">
-        <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
-      </ArticleBody>
-    </Fade>
-  );
+  return <MdArticle className="markdown-body" source={content} renderers={{ code: CodeRenderer }} />;
 };

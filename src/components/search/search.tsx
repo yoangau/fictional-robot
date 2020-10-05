@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Form, FormControl } from 'react-bootstrap';
 import { Languages } from '../../specs/language/languages';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectLanguage } from '../language/language.slice';
@@ -7,18 +6,14 @@ import Fuse from 'fuse.js';
 import { articlesSource } from '../../specs/articles/articles';
 import { changeArticles, selectArticles } from '../article/articles.slice';
 import { useHistory } from 'react-router-dom';
-import { SearchResult } from './search-result';
 import { SearchSource } from '../../specs/search/search';
 import styled from '@emotion/styled';
 
-const RelativeForm = styled(Form)`
-  position: relative;
-`;
-
-const AbsoluteSearchResult = styled.div`
-  position: absolute;
-  width: 100%;
-  z-index: 1;
+const SearchInput = styled.input`
+  border-radius: 0.4rem;
+  padding-left: 0.4rem;
+  outline: none;
+  border: none;
 `;
 
 export const Search = () => {
@@ -33,7 +28,7 @@ export const Search = () => {
   });
 
   return (
-    <RelativeForm
+    <form
       onSubmit={(event: React.FormEvent) => {
         event.preventDefault();
         dispatch(changeArticles({ articles: articlesSource }));
@@ -41,7 +36,7 @@ export const Search = () => {
         updateSearchValue('');
       }}
     >
-      <FormControl
+      <SearchInput
         type="text"
         placeholder={SearchSource[language]}
         className="mr-sm-2"
@@ -55,22 +50,6 @@ export const Search = () => {
           dispatch(changeArticles({ articles: fuse.search(target.value).map((res) => res.item) }));
         }}
       />
-      <AbsoluteSearchResult>
-        {searchValue &&
-          articles.slice(0, 3).map((article, i) => (
-            <SearchResult
-              key={`search-result-${i}`}
-              onClick={() => {
-                history.push(`/${article.url}`);
-                updateSearchValue('');
-              }}
-              title={article.title[language]}
-              date={article.date}
-              description={article.description[language]}
-              img={article.img}
-            />
-          ))}
-      </AbsoluteSearchResult>
-    </RelativeForm>
+    </form>
   );
 };

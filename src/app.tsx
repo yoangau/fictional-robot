@@ -1,6 +1,4 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Header } from './components/header/header';
 import { ArticlePreview } from './components/article/article-preview';
 import { Route, HashRouter as Router, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -10,14 +8,23 @@ import { articlesSource } from './specs/articles/articles';
 import 'github-markdown-css';
 import { AboutPage } from './components/about-page/about-page';
 import styled from '@emotion/styled';
+import { Navbar } from './components/navbar/navbar';
 
 const AppBody = styled.div`
-  margin-top: 10vh;
-  margin-bottom: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: space-around;
+
+  @media only screen and (max-width: 600px) {
+    max-width: 90vw !important;
+  }
+
+  @media only screen and (min-width: 600px) {
+    margin-top: 5vh;
+    margin-left: 25vw;
+    width: 50vw;
+  }
 `;
 
 export const App = () => {
@@ -31,7 +38,7 @@ export const App = () => {
 
   return (
     <Router>
-      <Header />
+      <Navbar />
       <AppBody>
         <Switch>
           <Route exact path="/">

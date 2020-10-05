@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { selectLanguage } from '../language/language.slice';
 import { useSelector } from 'react-redux';
 import { aboutSource } from '../../specs/about/about';
-import { Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin, faFacebook, faTwitter, faTwitch } from '@fortawesome/free-brands-svg-icons';
 import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -34,12 +33,13 @@ const AboutPageDiv = styled.div`
   margin-left: 5%;
 `;
 
-const AboutImage = styled(Image)`
+const AboutImage = styled.img`
   ${flexRowCenter}
   max-width: 30%;
   margin-left: 35%;
   margin-right: 35%;
   margin-bottom: 20px;
+  width: 100%;
 `;
 
 const AboutName = styled.h1`
@@ -61,7 +61,7 @@ export const AboutPage = () => {
   return (
     <AboutPageDiv>
       <Fade>
-        <AboutImage src={aboutSource.image} roundedCircle fluid />
+        <AboutImage src={aboutSource.image} />
         <AboutName>{aboutSource.name}</AboutName>
         <AboutLinks>
           {aboutSource.email && (
