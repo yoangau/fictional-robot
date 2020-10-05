@@ -9,15 +9,19 @@ import 'github-markdown-css';
 import { AboutPage } from './components/about-page/about-page';
 import styled from '@emotion/styled';
 import { Navbar } from './components/navbar/navbar';
+import { FadeIn } from './utils/fade-in';
 
-const AppBody = styled.div`
+const AppBody = styled(FadeIn)`
   display: flex;
   flex-direction: column;
   align-items: center;
   align-content: space-around;
 
   @media only screen and (max-width: 600px) {
-    max-width: 90vw !important;
+    max-width: 90vw;
+    margin-left: 5vw;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
   }
 
   @media only screen and (min-width: 600px) {

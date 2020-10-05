@@ -10,8 +10,9 @@ import { SearchSource } from '../../specs/search/search';
 import styled from '@emotion/styled';
 
 const SearchInput = styled.input`
-  border-radius: 0.4rem;
-  padding-left: 0.4rem;
+  height: 2rem;
+  border-radius: 1rem;
+  padding-left: 1rem;
   outline: none;
   border: none;
 `;
@@ -39,7 +40,6 @@ export const Search = () => {
       <SearchInput
         type="text"
         placeholder={SearchSource[language]}
-        className="mr-sm-2"
         value={searchValue}
         onChange={({ target }) => {
           updateSearchValue(target.value);

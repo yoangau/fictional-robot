@@ -4,7 +4,7 @@ export interface Article {
   title: LanguageMap<string>;
   description: LanguageMap<string>;
   img: string;
-  text: LanguageMap<string>;
+  text: LanguageMap<Promise<string>>;
   date: string;
   url: string;
 }

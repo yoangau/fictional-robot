@@ -87,6 +87,11 @@ const NavLink = styled.a`
     color: var(--text-secondary);
     cursor: pointer;
   }
+
+  @media only screen and (max-width: 600px) {
+    flex-direction: row;
+    justify-content: center;
+  }
 `;
 
 const LinkText = styled.span`
@@ -175,7 +180,7 @@ export const Navbar = () => {
           </NavLink>
         </NavItem>
         <NavItem>
-          <NavLink>
+          <NavLink onClick={home}>
             <LinkIcon icon={faSearch} />
             <LinkText>
               <Search />

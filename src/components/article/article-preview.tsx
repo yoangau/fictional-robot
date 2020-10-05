@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ArticleProps } from '../../specs/articles/article.interface';
 import { useSelector } from 'react-redux';
 import { selectLanguage } from '../language/language.slice';
 import { useHistory } from 'react-router-dom';
-// @ts-ignore
-import Fade from 'react-reveal/Fade';
 import styled from '@emotion/styled';
 
 const Card = styled.div`
@@ -34,18 +32,16 @@ export const ArticlePreview = ({ article }: ArticleProps) => {
   const history = useHistory();
 
   return (
-    <Fade>
-      <Card
-        onClick={() => {
-          history.push(article.url);
-        }}
-      >
-        <CardImage src={article.img} />
-        <CardDescription>
-          <h4>{article.title[language]}</h4>
-          <p>{article.description[language]}</p>
-        </CardDescription>
-      </Card>
-    </Fade>
+    <Card
+      onClick={() => {
+        history.push(article.url);
+      }}
+    >
+      <CardImage src={article.img} />
+      <CardDescription>
+        <h4>{article.title[language]}</h4>
+        <p>{article.description[language]}</p>
+      </CardDescription>
+    </Card>
   );
 };
