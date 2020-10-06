@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Languages } from '../../specs/language/languages';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectLanguage } from '../language/language.slice';
@@ -9,26 +9,33 @@ import { useHistory } from 'react-router-dom';
 import { SearchSource } from '../../specs/search/search';
 import styled from '@emotion/styled';
 
-const SearchInput = styled.input`
+interface SearchInputProps {
+  show: boolean;
+  changeShow?: Dispatch<SetStateAction<boolean>>;
+}
+
+const SearchInput = styled.input<SearchInputProps>(
+  ({ show }: SearchInputProps) => `
+  label: search;
   height: 2rem;
   border-radius: 1rem;
   padding-left: 1rem;
   outline: none;
   border: none;
-  @media only screen and (max-width: 600px) {
-    &:hover,
-    &:focus {
-      display: inline !important;
-      position: absolute;
-      bottom: 90vh;
-      right: 0vw;
-      z-index: 2;
-      background: var(--bg-primary);
-    }
-  }
-`;
 
-export const Search = () => {
+  @media only screen and (max-width: 600px) {
+    visibility: ${show ? 'visible' : 'hidden'};
+    position: absolute;
+    top: -50%;
+    width: 50vw;
+    right: -1rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+`,
+);
+
+export const Search = ({ show, changeShow }: SearchInputProps) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const language = useSelector(selectLanguage);
@@ -46,9 +53,11 @@ export const Search = () => {
         dispatch(changeArticles({ articles: articlesSource }));
         if (articles.length !== 0 && searchValue) history.push(`/${articles[0].url}`);
         updateSearchValue('');
+        if (changeShow) changeShow(false);
       }}
     >
       <SearchInput
+        show={show}
         type="text"
         placeholder={SearchSource[language]}
         value={searchValue}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArticlePreview } from './components/article/article-preview';
-import { Route, HashRouter as Router, Switch } from 'react-router-dom';
+import { Route, HashRouter as Router, Switch, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { ArticlePage } from './components/article/article-page';
 import { selectArticles } from './components/article/articles.slice';
@@ -10,6 +10,8 @@ import { AboutPage } from './components/about-page/about-page';
 import styled from '@emotion/styled';
 import { Navbar } from './components/navbar/navbar';
 import { FadeIn } from './utils/fade-in';
+import { NoSearchResultSource } from './specs/search/search';
+import { selectLanguage } from './components/language/language.slice';
 
 const AppBody = styled(FadeIn)`
   display: flex;
@@ -34,11 +36,7 @@ const AppBody = styled(FadeIn)`
 export const App = () => {
   const { articles } = useSelector(selectArticles);
   const articlePreviews = articles.map((article, i) => <ArticlePreview article={article} key={`article-preview-${i}`} />);
-  const articlePages = articlesSource.map((article, i) => (
-    <Route exact to={article.url} key={`article-page-${i}`}>
-      <ArticlePage article={article} />
-    </Route>
-  ));
+  const language = useSelector(selectLanguage);
 
   return (
     <Router>
@@ -46,12 +44,17 @@ export const App = () => {
       <AppBody>
         <Switch>
           <Route exact path="/">
-            {articlePreviews}
+            {articlePreviews.length !== 0 ? articlePreviews : <h1>{NoSearchResultSource[language]}</h1>}
           </Route>
-          <Route exact path="/about">
+          <Route path="/about">
             <AboutPage />
           </Route>
-          {articlePages}
+          {articlesSource.map((article, i) => (
+            <Route path={`/${article.url}`} key={`article-page-${i}`}>
+              <ArticlePage article={article} />
+            </Route>
+          ))}
+          <Redirect to="/" />
         </Switch>
       </AppBody>
     </Router>

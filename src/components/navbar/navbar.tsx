@@ -1,5 +1,5 @@
 //inspired by : https://github.com/fireship-io/222-responsive-icon-nav-css/
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faIceCream, faAngleDoubleRight, faGlobeAmericas, faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -25,6 +25,10 @@ const FixedNavbar = styled.nav`
     bottom: 0;
     width: 100vw;
     height: 5rem;
+
+    [class*='unhide'] {
+      display: contents;
+    }
   }
 
   @media only screen and (min-width: 600px) {
@@ -155,12 +159,14 @@ export const Navbar = () => {
   const dispatch = useDispatch();
   const language = useSelector(selectLanguage);
   const history = useHistory();
+  const [showSearch, changeShowSearch] = useState(false);
   const home = () => {
     history.push('/');
   };
   const about = () => {
     history.push('/about');
   };
+  const toggleShowSearch = () => changeShowSearch(!showSearch);
   return (
     <FixedNavbar>
       <Nav>
@@ -182,9 +188,9 @@ export const Navbar = () => {
         </NavItem>
         <NavItem>
           <NavLink onClick={home}>
-            <LinkIcon icon={faSearch} />
-            <LinkText className="search-overlay">
-              <Search />
+            <LinkIcon icon={faSearch} onClick={toggleShowSearch} />
+            <LinkText className="unhide">
+              <Search show={showSearch} changeShow={changeShowSearch} />
             </LinkText>
           </NavLink>
         </NavItem>
