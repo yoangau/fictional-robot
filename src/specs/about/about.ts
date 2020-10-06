@@ -3,7 +3,7 @@ import { LanguageMap } from '../language/languages';
 interface About {
   name: string;
   image: string;
-  description: LanguageMap<string>;
+  description: LanguageMap<Promise<string>>;
   github?: string;
   facebook?: string;
   linkedin?: string;
@@ -21,7 +21,10 @@ export const aboutHeaderSource: LanguageMap<string> = {
 export const aboutSource: About = {
   name: 'Fictional Robot',
   image: 'https://github.com/yoangau.png',
-  description: { en: require('./about-en.md'), fr: require('./about-fr.md') },
+  description: {
+    en: fetch(require('./about-en.md')).then((response) => response.text()),
+    fr: fetch(require('./about-fr.md')).then((response) => response.text()),
+  },
   github: 'https://github.com/yoangau/',
   linkedin: 'https://www.linkedin.com/in/yoangau/',
   email: 'fictionalrobotblog@gmail.com',

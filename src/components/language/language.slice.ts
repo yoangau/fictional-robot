@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { Language, Languages } from '../../specs/language/languages';
 import { RootState } from '../../store';
 export interface LanguageState {
@@ -20,6 +20,10 @@ const getBrowserLanguage = (): Language => {
   return Languages[0];
 };
 
+const getNextLanguage = (language: Language): Language => {
+  return Languages[(Languages.indexOf(language) + 1) % Languages.length];
+};
+
 const initialState: LanguageState = {
   language: getBrowserLanguage(),
 };
@@ -28,8 +32,8 @@ export const slice = createSlice({
   name: 'language',
   initialState,
   reducers: {
-    changeLanguage: (state, action: PayloadAction<Language>) => {
-      state.language = action.payload;
+    changeLanguage: (state) => {
+      state.language = getNextLanguage(state.language);
     },
   },
 });

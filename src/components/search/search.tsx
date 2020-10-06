@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { Form, FormControl } from 'react-bootstrap';
+import React, { Dispatch, SetStateAction, useState } from 'react';
 import { Languages } from '../../specs/language/languages';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectLanguage } from '../language/language.slice';
@@ -7,21 +6,36 @@ import Fuse from 'fuse.js';
 import { articlesSource } from '../../specs/articles/articles';
 import { changeArticles, selectArticles } from '../article/articles.slice';
 import { useHistory } from 'react-router-dom';
-import { SearchResult } from './search-result';
 import { SearchSource } from '../../specs/search/search';
 import styled from '@emotion/styled';
 
-const RelativeForm = styled(Form)`
-  position: relative;
-`;
+interface SearchInputProps {
+  show: boolean;
+  changeShow?: Dispatch<SetStateAction<boolean>>;
+}
 
-const AbsoluteSearchResult = styled.div`
-  position: absolute;
-  width: 100%;
-  z-index: 1;
-`;
+const SearchInput = styled.input<SearchInputProps>(
+  ({ show }: SearchInputProps) => `
+  label: search;
+  height: 2rem;
+  border-radius: 1rem;
+  padding-left: 1rem;
+  outline: none;
+  border: none;
 
-export const Search = () => {
+  @media only screen and (max-width: 600px) {
+    visibility: ${show ? 'visible' : 'hidden'};
+    position: absolute;
+    top: -50%;
+    width: 50vw;
+    right: -1rem;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+  }
+`,
+);
+
+export const Search = ({ show, changeShow }: SearchInputProps) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const language = useSelector(selectLanguage);
@@ -33,18 +47,19 @@ export const Search = () => {
   });
 
   return (
-    <RelativeForm
+    <form
       onSubmit={(event: React.FormEvent) => {
         event.preventDefault();
         dispatch(changeArticles({ articles: articlesSource }));
         if (articles.length !== 0 && searchValue) history.push(`/${articles[0].url}`);
         updateSearchValue('');
+        if (changeShow) changeShow(false);
       }}
     >
-      <FormControl
+      <SearchInput
+        show={show}
         type="text"
         placeholder={SearchSource[language]}
-        className="mr-sm-2"
         value={searchValue}
         onChange={({ target }) => {
           updateSearchValue(target.value);
@@ -55,22 +70,6 @@ export const Search = () => {
           dispatch(changeArticles({ articles: fuse.search(target.value).map((res) => res.item) }));
         }}
       />
-      <AbsoluteSearchResult>
-        {searchValue &&
-          articles.slice(0, 3).map((article, i) => (
-            <SearchResult
-              key={`search-result-${i}`}
-              onClick={() => {
-                history.push(`/${article.url}`);
-                updateSearchValue('');
-              }}
-              title={article.title[language]}
-              date={article.date}
-              description={article.description[language]}
-              img={article.img}
-            />
-          ))}
-      </AbsoluteSearchResult>
-    </RelativeForm>
+    </form>
   );
 };

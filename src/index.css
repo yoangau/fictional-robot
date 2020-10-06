@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap');
+
+:root {
+  font-size: 16px;
+  font-family: 'Roboto';
+  --text-primary: #12a886;
+  --text-secondary: #6649b8;
+  --bg-primary: #123;
+  --bg-secondary: #012;
+  --transition-speed: 600ms;
+}
+
+body {
+  color: black;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+}
+
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #6649b8;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #12a886;
+}
