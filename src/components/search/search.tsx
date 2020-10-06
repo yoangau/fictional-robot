@@ -15,6 +15,17 @@ const SearchInput = styled.input`
   padding-left: 1rem;
   outline: none;
   border: none;
+  @media only screen and (max-width: 600px) {
+    &:hover,
+    &:focus {
+      display: inline !important;
+      position: absolute;
+      bottom: 90vh;
+      right: 0vw;
+      z-index: 2;
+      background: var(--bg-primary);
+    }
+  }
 `;
 
 export const Search = () => {

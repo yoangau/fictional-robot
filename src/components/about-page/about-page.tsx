@@ -19,9 +19,14 @@ const flexRowCenter = `
 const DarkLink = styled.a`
   font-size: 30px;
   color: black;
+  transition: var(--transition-speed);
   text-decoration: none;
   margin-left: 10px;
   margin-right: 10px;
+  &:hover {
+    color: var(--text-secondary);
+    transition: var(--transition-speed);
+  }
 `;
 
 const AboutPageDiv = styled(FadeIn)`

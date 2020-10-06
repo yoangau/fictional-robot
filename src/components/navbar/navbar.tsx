@@ -77,12 +77,11 @@ const NavLink = styled.a`
   height: 5rem;
   color: var(--text-primary);
   text-decoration: none;
-  filter: grayscale(100%) opacity(0.7);
+  filter: opacity(0.7);
   transition: var(--transition-speed);
 
   &:focus,
   &:hover {
-    filter: grayscale(0%) opacity(1);
     background: var(--bg-secondary);
     color: var(--text-secondary);
     cursor: pointer;
@@ -97,8 +96,10 @@ const NavLink = styled.a`
 const LinkText = styled.span`
   label: link-text;
   margin-left: 1rem;
-  display: none;
   overflow: hidden;
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const LinkIcon = styled(FontAwesomeIcon)`
@@ -182,7 +183,7 @@ export const Navbar = () => {
         <NavItem>
           <NavLink onClick={home}>
             <LinkIcon icon={faSearch} />
-            <LinkText>
+            <LinkText className="search-overlay">
               <Search />
             </LinkText>
           </NavLink>

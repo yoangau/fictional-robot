@@ -3,9 +3,9 @@
 :root {
   font-size: 16px;
   font-family: 'Roboto';
-  --text-primary: #b6b6b6;
+  --text-primary: #6649b8;
   --text-secondary: #12a886;
-  --bg-primary: #001e38;
+  --bg-primary: #001032;
   --bg-secondary: #6649b8;
   --transition-speed: 600ms;
 }
