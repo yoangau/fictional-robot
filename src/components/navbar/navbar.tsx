@@ -101,6 +101,7 @@ const LinkText = styled.span`
   label: link-text;
   margin-left: 1rem;
   overflow: hidden;
+  white-space: nowrap;
   @media only screen and (max-width: 600px) {
     display: none;
   }
