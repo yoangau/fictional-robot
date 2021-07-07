@@ -54,7 +54,10 @@ export const AboutPage = () => {
   const [content, setContent] = useState('');
   const language = useSelector(selectLanguage);
 
-  fetch(aboutSource.description[language])
+  const publicAboutContentUri = `${process.env.PUBLIC_URL}about/${aboutSource.description[language]}`;
+  const publicAboutFolderUri = `${process.env.PUBLIC_URL}about/`;
+
+  fetch(publicAboutContentUri)
     .then((response) => response.text())
     .then((text) => setContent(text));
 
@@ -101,7 +104,11 @@ export const AboutPage = () => {
           )}
         </AboutLinks>
         <div className="markdown-body">
-          <ReactMarkdown source={content} renderers={{ code: CodeRenderer }} />
+          <ReactMarkdown
+            source={content}
+            renderers={{ code: CodeRenderer }}
+            transformImageUri={(uri) => uri.replace('./', publicAboutFolderUri)}
+          />
         </div>
       </Fade>
     </AboutPageDiv>

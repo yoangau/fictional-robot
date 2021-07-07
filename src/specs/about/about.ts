@@ -21,7 +21,7 @@ export const aboutHeaderSource: LanguageMap<string> = {
 export const aboutSource: About = {
   name: 'Fictional Robot',
   image: 'https://github.com/yoangau.png',
-  description: { en: require('./about-en.md'), fr: require('./about-fr.md') },
+  description: { en: 'about-en.md', fr: 'about-fr.md' },
   github: 'https://github.com/yoangau/',
   linkedin: 'https://www.linkedin.com/in/yoangau/',
   email: 'fictionalrobotblog@gmail.com',
